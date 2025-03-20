@@ -16,6 +16,9 @@ size = Vector2(256.112, 0.985915)
 [node name="player" parent="." instance=ExtResource("1_6jt6y")]
 position = Vector2(135, 212)
 
+[node name="Camera2D" type="Camera2D" parent="player"]
+position = Vector2(25, 25)
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(575.25, 455)
 scale = Vector2(4.49023, 71)
@@ -26,9 +29,6 @@ texture = SubResource("GradientTexture1D_rym3p")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/StaticBody2D"]
 position = Vector2(-0.0556793, 0)
 shape = SubResource("RectangleShape2D_uhfnh")
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(576, 324)
 
 [node name="door" parent="." instance=ExtResource("2_tpesi")]
 position = Vector2(773, 402)
