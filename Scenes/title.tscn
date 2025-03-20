@@ -1,0 +1,56 @@
+[gd_scene load_steps=2 format=3 uid="uid://cjiopppeywiov"]
+
+[ext_resource type="Script" uid="uid://bw6q24mb0qwf6" path="res://Scripts/menu_button.gd" id="1_e4f6v"]
+
+[node name="title" type="Node2D"]
+metadata/_edit_lock_ = true
+
+[node name="background" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="background"]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.352941, 0.694118, 0.733333, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="GUI" type="CanvasLayer" parent="."]
+
+[node name="title" type="Label" parent="GUI"]
+offset_left = 273.0
+offset_top = 119.0
+offset_right = 872.0
+offset_bottom = 256.0
+theme_override_font_sizes/font_size = 100
+text = "Game Name"
+horizontal_alignment = 1
+
+[node name="new game" type="Label" parent="GUI"]
+offset_left = 416.0
+offset_top = 318.0
+offset_right = 694.0
+offset_bottom = 391.0
+mouse_filter = 0
+theme_override_font_sizes/font_size = 50
+text = "new game"
+horizontal_alignment = 1
+script = ExtResource("1_e4f6v")
+
+[node name="arrow" type="Label" parent="GUI"]
+offset_left = 364.0
+offset_top = 321.0
+offset_right = 430.0
+offset_bottom = 394.0
+theme_override_font_sizes/font_size = 50
+text = ">>"
+horizontal_alignment = 1
+
+[node name="continue" type="Label" parent="GUI"]
+offset_left = 416.0
+offset_top = 425.0
+offset_right = 694.0
+offset_bottom = 498.0
+mouse_filter = 0
+theme_override_font_sizes/font_size = 50
+text = "continue"
+horizontal_alignment = 1
+script = ExtResource("1_e4f6v")

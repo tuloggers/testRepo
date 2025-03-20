@@ -1,0 +1,99 @@
+[gd_scene load_steps=5 format=3 uid="uid://dgp1s588hmmgw"]
+
+[ext_resource type="Texture2D" uid="uid://wjya4pbq4nxs" path="res://Assets/Untitled design.png" id="1_n4n4n"]
+[ext_resource type="Script" uid="uid://bngmxqinnbvxl" path="res://Scripts/classPov.gd" id="2_m37oa"]
+[ext_resource type="PackedScene" uid="uid://j08h12jr7k16" path="res://Scenes/sus_bar.tscn" id="5_jx8on"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6ea7e"]
+size = Vector2(144, 653.5)
+
+[node name="classPov" type="Node2D"]
+
+[node name="bg" type="Sprite2D" parent="."]
+position = Vector2(972, 324)
+texture = ExtResource("1_n4n4n")
+
+[node name="rightHelp" type="Button" parent="bg"]
+offset_left = 617.0
+offset_top = -35.0
+offset_right = 846.0
+offset_bottom = 181.0
+theme_override_font_sizes/font_size = 32
+text = "Ask Help"
+
+[node name="leftHelp" type="Button" parent="bg"]
+offset_left = -841.0
+offset_top = -35.0
+offset_right = -612.0
+offset_bottom = 181.0
+theme_override_font_sizes/font_size = 32
+text = "Ask Help"
+
+[node name="panCam" type="Camera2D" parent="."]
+position = Vector2(972, 324)
+limit_left = 0
+limit_top = 0
+limit_right = 1944
+limit_bottom = 648
+limit_smoothed = true
+position_smoothing_enabled = true
+position_smoothing_speed = 4.0
+script = ExtResource("2_m37oa")
+
+[node name="farLeft" type="Area2D" parent="panCam"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="panCam/farLeft"]
+position = Vector2(-504, -2.25)
+shape = SubResource("RectangleShape2D_6ea7e")
+
+[node name="nearLeft" type="Area2D" parent="panCam"]
+position = Vector2(144, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="panCam/nearLeft"]
+position = Vector2(-504, -2.25)
+shape = SubResource("RectangleShape2D_6ea7e")
+
+[node name="farRight" type="Area2D" parent="panCam"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="panCam/farRight"]
+position = Vector2(506, -1)
+shape = SubResource("RectangleShape2D_6ea7e")
+
+[node name="nearRight" type="Area2D" parent="panCam"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="panCam/nearRight"]
+position = Vector2(362, -1)
+shape = SubResource("RectangleShape2D_6ea7e")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="panCam"]
+
+[node name="susBar" parent="panCam/CanvasLayer" instance=ExtResource("5_jx8on")]
+
+[node name="answer" type="Button" parent="panCam/CanvasLayer"]
+offset_left = 358.0
+offset_top = 535.0
+offset_right = 759.0
+offset_bottom = 616.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 32
+text = "Answer Quiz"
+
+[node name="platform" type="Button" parent="panCam/CanvasLayer"]
+offset_left = 770.0
+offset_top = 535.0
+offset_right = 826.0
+offset_bottom = 616.0
+text = "RUN"
+
+[connection signal="pressed" from="bg/rightHelp" to="panCam" method="_on_right_help_pressed"]
+[connection signal="pressed" from="bg/rightHelp" to="panCam/CanvasLayer/susBar/SusBar" method="_on_right_help_pressed"]
+[connection signal="pressed" from="bg/leftHelp" to="panCam" method="_on_left_help_pressed"]
+[connection signal="pressed" from="bg/leftHelp" to="panCam/CanvasLayer/susBar/SusBar" method="_on_left_help_pressed"]
+[connection signal="mouse_shape_entered" from="panCam/farLeft" to="panCam" method="_on_far_left_mouse_shape_entered"]
+[connection signal="mouse_shape_entered" from="panCam/nearLeft" to="panCam" method="_on_near_left_mouse_shape_entered"]
+[connection signal="mouse_shape_entered" from="panCam/farRight" to="panCam" method="_on_far_right_mouse_shape_entered"]
+[connection signal="mouse_shape_entered" from="panCam/nearRight" to="panCam" method="_on_near_right_mouse_shape_entered"]
+[connection signal="pressed" from="panCam/CanvasLayer/answer" to="panCam" method="_on_button_pressed"]
+[connection signal="pressed" from="panCam/CanvasLayer/platform" to="panCam" method="_on_platform_pressed"]
+
+[editable path="panCam/CanvasLayer/susBar"]

@@ -1,0 +1,16 @@
+[gd_scene load_steps=5 format=3 uid="uid://0awxqggjtghk"]
+
+[ext_resource type="PackedScene" uid="uid://8uvrfx2yjo16" path="res://Scenes/quizui.tscn" id="1_n8765"]
+[ext_resource type="PackedScene" uid="uid://dgp1s588hmmgw" path="res://Scenes/class_pov.tscn" id="2_82ak6"]
+[ext_resource type="PackedScene" uid="uid://cjiopppeywiov" path="res://Scenes/title.tscn" id="3_q07t8"]
+[ext_resource type="PackedScene" uid="uid://bxtptwr7m76x" path="res://Scenes/platformer.tscn" id="4_igmyd"]
+
+[node name="classroom" type="Node2D"]
+
+[node name="quizui" parent="." instance=ExtResource("1_n8765")]
+
+[node name="classPov" parent="." instance=ExtResource("2_82ak6")]
+
+[node name="title" parent="." instance=ExtResource("3_q07t8")]
+
+[node name="platformer" parent="." instance=ExtResource("4_igmyd")]

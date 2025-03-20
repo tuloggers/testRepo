@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://j08h12jr7k16"]
+
+[ext_resource type="Texture2D" uid="uid://c7kb1d43qhv7f" path="res://Assets/LineBar-removebg-preview.png" id="1_t01jv"]
+[ext_resource type="Script" path="res://Scripts/susBar.gd" id="2_2ulbr"]
+
+[node name="susBar" type="Node"]
+
+[node name="SusBar" type="TextureProgressBar" parent="."]
+offset_left = 125.0
+offset_top = 45.0
+offset_right = 485.0
+offset_bottom = 240.0
+rotation = 1.5708
+scale = Vector2(2, 0.5)
+max_value = 50.0
+fill_mode = 1
+texture_under = ExtResource("1_t01jv")
+texture_progress = ExtResource("1_t01jv")
+tint_under = Color(0.431146, 0.61162, 1, 1)
+tint_progress = Color(1, 0.329412, 0.541176, 1)
+script = ExtResource("2_2ulbr")
+
+[node name="Timer" type="Timer" parent="SusBar"]
+autostart = true
+
+[connection signal="timeout" from="SusBar/Timer" to="SusBar" method="_on_timer_timeout"]

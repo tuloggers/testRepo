@@ -1,0 +1,58 @@
+[gd_scene load_steps=7 format=3 uid="uid://8uvrfx2yjo16"]
+
+[ext_resource type="Texture2D" uid="uid://bge6lfa4jma0e" path="res://Assets/quizsheet.png" id="1_kl80q"]
+[ext_resource type="Script" uid="uid://b3gp1rnn43mdx" path="res://Scripts/answersheet.gd" id="2_58015"]
+[ext_resource type="PackedScene" uid="uid://j08h12jr7k16" path="res://Scenes/sus_bar.tscn" id="3_tpno6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_np6xs"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4g53b"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_61dxj"]
+
+[node name="quizui" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(576, 324)
+texture = ExtResource("1_kl80q")
+script = ExtResource("2_58015")
+
+[node name="Button" type="Button" parent="Sprite2D"]
+offset_left = 495.0
+offset_top = -287.0
+offset_right = 561.0
+offset_bottom = 304.0
+theme_override_font_sizes/font_size = 32
+text = "B
+A
+C
+K"
+
+[node name="LineEdit" type="LineEdit" parent="Sprite2D"]
+offset_left = -25.0
+offset_top = -264.0
+offset_right = 144.0
+offset_bottom = -202.0
+theme_override_colors/font_placeholder_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_np6xs")
+theme_override_styles/read_only = SubResource("StyleBoxEmpty_4g53b")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_61dxj")
+placeholder_text = "_____________________"
+clear_button_enabled = true
+
+[node name="Label" type="Label" parent="Sprite2D"]
+offset_left = -150.0
+offset_top = -261.0
+offset_right = -41.0
+offset_bottom = -212.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "1 + 1 ="
+
+[node name="susBar" parent="." instance=ExtResource("3_tpno6")]
+
+[connection signal="pressed" from="Sprite2D/Button" to="Sprite2D" method="_on_button_pressed"]
+[connection signal="text_submitted" from="Sprite2D/LineEdit" to="Sprite2D" method="_on_line_edit_text_submitted"]
+
+[editable path="susBar"]
